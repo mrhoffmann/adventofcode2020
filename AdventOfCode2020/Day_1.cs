@@ -27,7 +27,7 @@ namespace AdventOfCode2020
         }
 
         /// <summary>
-        /// Run the script of the day
+        /// Run the script for part 1
         /// </summary>
         public void RunPart1()
         {
@@ -43,7 +43,29 @@ namespace AdventOfCode2020
                     }
 
             Console.WriteLine($"{options[0]} + {options[1]} = 2020\n{options[0]} * {options[1]} = {options[0] * options[1]}");
+            Console.ReadKey();
+        }
 
+        /// <summary>
+        /// Run the script for part 2
+        /// </summary>
+        public void RunPart2()
+        {
+            List<int> input = GetIntInput();
+
+            int[] options = new int[3];
+            foreach (int i in input)
+                foreach (int j in input)
+                    foreach (int k in input)
+                        if (i + j + k == 2020 && i != j && i != k && j != i && j != k && k != i && k != j)
+                        {
+                            options[0] = i;
+                            options[1] = j;
+                            options[2] = k;
+                        }
+                    
+
+            Console.WriteLine($"{options[0]} + {options[1]} + {options[2]} = 2020\n{options[0]} * {options[1]} * {options[2]} = {options[0] * options[1] * options[2]}");
             Console.ReadKey();
         }
     }
