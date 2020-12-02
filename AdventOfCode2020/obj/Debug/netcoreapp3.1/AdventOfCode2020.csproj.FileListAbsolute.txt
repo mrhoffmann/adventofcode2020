@@ -10,3 +10,4 @@ C:\Users\hoffm\source\repos\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcorea
 C:\Users\hoffm\source\repos\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.dll
 C:\Users\hoffm\source\repos\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.pdb
 C:\Users\hoffm\source\repos\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.genruntimeconfig.cache
+C:\Users\hoffm\source\repos\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.csprojAssemblyReference.cache

@@ -20,9 +20,7 @@ namespace AdventOfCode2020
         {
             List<int> retval = new List<int>();
             foreach(string s in GetStringInput())
-            {
                 retval.Add(int.Parse(s));
-            }
             return retval;
         }
 
