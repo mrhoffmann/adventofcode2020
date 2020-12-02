@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace AdventOfCode2020
@@ -14,8 +15,7 @@ namespace AdventOfCode2020
 
         public int[] GetRange(string row)
         {
-            string retval = row.Substring(0, row.IndexOf(" "));
-            return new int[2] { int.Parse(retval.Split("-")[0]), int.Parse(retval.Split("-")[1]) };
+            return new int[2] { int.Parse(row.Substring(0, row.IndexOf(" ")).Split("-")[0]), int.Parse(row.Substring(0, row.IndexOf(" ")).Split("-")[1]) };
         }
 
         public char GetChar(string row)
@@ -39,17 +39,11 @@ namespace AdventOfCode2020
 
                 int     counter     = 0;
                 foreach (char c in haystack)
-                {
                     if(c == needle)
-                    {
                         counter++;
-                    }
-                }
 
-                if(counter >= range[0] && counter <= range[1])
-                {
+                if (counter >= range[0] && counter <= range[1])
                     ValidPasswords++;
-                }
             }
             Console.WriteLine(ValidPasswords);
         }
@@ -66,9 +60,7 @@ namespace AdventOfCode2020
                 string  haystack    = GetPassword(row);
 
                 if (haystack[range[0]] == needle && haystack[range[0]] != haystack[range[1]] || haystack[range[1]] == needle && haystack[range[0]] != haystack[range[1]])
-                {
                     ValidPasswords++;
-                }
             }
             Console.WriteLine(ValidPasswords);
         }
