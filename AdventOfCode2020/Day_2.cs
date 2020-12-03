@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace AdventOfCode2020
 {
-    class Day_2
+    class Day_2 // https://adventofcode.com/2020/day/2
     {
         public string[] GetStringInput()
         {
@@ -20,7 +16,7 @@ namespace AdventOfCode2020
 
         public char GetChar(string row)
         {
-            return row.Substring(row.IndexOf(" ")+1, 1)[0];
+            return row.Substring(row.IndexOf(" ") + 1, 1)[0];
         }
 
         public string GetPassword(string row)
