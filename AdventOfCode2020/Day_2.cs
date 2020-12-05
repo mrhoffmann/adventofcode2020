@@ -2,12 +2,9 @@
 
 namespace AdventOfCode2020
 {
-    class Day_2 // https://adventofcode.com/2020/day/2
+    class Day_2 : Recurring // https://adventofcode.com/2020/day/2
     {
-        public string[] GetStringInput()
-        {
-            return System.IO.File.ReadAllLines(@"Input\Day 2\input.txt");
-        }
+        private readonly string[] input = GetInput(2);
 
         public int[] GetRange(string row)
         {
@@ -24,10 +21,10 @@ namespace AdventOfCode2020
             return row.Substring(row.IndexOf(":") + 2, row.Length - (row.IndexOf(":") + 2));
         }
 
-        public void RunPart1()
+        public override void RunPartA()
         {
             int     ValidPasswords  = 0;
-            foreach(string row in GetStringInput())
+            foreach(string row in input)
             {
                 int[]   range       = GetRange(row);
                 char    needle      = GetChar(row);
@@ -44,10 +41,10 @@ namespace AdventOfCode2020
             Console.WriteLine(ValidPasswords);
         }
 
-        public void RunPart2()
+        public override void RunPartB()
         {
             int     ValidPasswords  = 0;
-            foreach (string row in GetStringInput())
+            foreach (string row in input)
             {
                 int[]   range       = GetRange(row);
                         range[0]    = range[0] - 1;

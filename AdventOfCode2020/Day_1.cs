@@ -3,31 +3,19 @@ using System.Collections.Generic;
 
 namespace AdventOfCode2020
 {
-    class Day_1 //https://adventofcode.com/2020/day/1
+    class Day_1 : Recurring //https://adventofcode.com/2020/day/1
     {
-        /// <summary>
-        /// Get string input from file
-        /// </summary>
-        public string[] GetStringInput()
-        {
-            return System.IO.File.ReadAllLines(@"Input\Day 1\input.txt");
-        }
+        private readonly string[] input = GetInput(1);
 
-        /// <summary>
-        /// Return input as an int
-        /// </summary>
         public List<int> GetIntInput()
         {
             List<int> retval = new List<int>();
-            foreach(string s in GetStringInput())
+            foreach(string s in input)
                 retval.Add(int.Parse(s));
             return retval;
         }
 
-        /// <summary>
-        /// Run the script for part 1
-        /// </summary>
-        public void RunPart1()
+        public override void RunPartA()
         {
             List<int> input = GetIntInput();
 
@@ -44,10 +32,7 @@ namespace AdventOfCode2020
             Console.ReadKey();
         }
 
-        /// <summary>
-        /// Run the script for part 2
-        /// </summary>
-        public void RunPart2()
+        public override void RunPartB()
         {
             List<int> input = GetIntInput();
 
