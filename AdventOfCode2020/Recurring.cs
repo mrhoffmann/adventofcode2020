@@ -2,6 +2,9 @@
 
 namespace AdventOfCode2020
 {
+    /// <summary>
+    /// Made to replace the need for recurring code in each class.
+    /// </summary>
     abstract class Recurring
     {
         /// <summary>
@@ -9,11 +12,16 @@ namespace AdventOfCode2020
         /// </summary>
         public virtual void Run()
         {
-            RunPartA();
-            RunPartB();
+            Console.WriteLine(RunPartA());
+            Console.WriteLine(RunPartB());
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Retriew the input for the given day.
+        /// </summary>
+        /// <param name="day"></param>
+        /// <returns></returns>
         public static string[] GetInput( int day )
         {
             return System.IO.File.ReadAllLines($@"Input\Day {day}\input.txt");
@@ -23,12 +31,12 @@ namespace AdventOfCode2020
         /// Run part A of the day, in some cases must be ran first.
         /// <para>Please only execute Run.</para>
         /// </summary>
-        public abstract void RunPartA();
+        public abstract string RunPartA();
 
         /// <summary>
         /// Run part B of the day.
         /// <para>Please only execute Run.</para>
         /// </summary>
-        public abstract void RunPartB();
+        public abstract string RunPartB();
     }
 }

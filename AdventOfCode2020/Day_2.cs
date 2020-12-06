@@ -1,27 +1,25 @@
-﻿using System;
-
-namespace AdventOfCode2020
+﻿namespace AdventOfCode2020
 {
     class Day_2 : Recurring // https://adventofcode.com/2020/day/2
     {
         private readonly string[] input = GetInput(2);
 
-        public int[] GetRange(string row)
+        private int[] GetRange(string row)
         {
             return new int[2] { int.Parse(row.Substring(0, row.IndexOf(" ")).Split("-")[0]), int.Parse(row.Substring(0, row.IndexOf(" ")).Split("-")[1]) };
         }
 
-        public char GetChar(string row)
+        private char GetChar(string row)
         {
             return row.Substring(row.IndexOf(" ") + 1, 1)[0];
         }
 
-        public string GetPassword(string row)
+        private string GetPassword(string row)
         {
             return row.Substring(row.IndexOf(":") + 2, row.Length - (row.IndexOf(":") + 2));
         }
 
-        public override void RunPartA()
+        public override string RunPartA()
         {
             int     ValidPasswords  = 0;
             foreach(string row in input)
@@ -38,10 +36,10 @@ namespace AdventOfCode2020
                 if (counter >= range[0] && counter <= range[1])
                     ValidPasswords++;
             }
-            Console.WriteLine(ValidPasswords);
+            return ValidPasswords.ToString();
         }
 
-        public override void RunPartB()
+        public override string RunPartB()
         {
             int     ValidPasswords  = 0;
             foreach (string row in input)
@@ -55,7 +53,7 @@ namespace AdventOfCode2020
                 if (haystack[range[0]] == needle && haystack[range[0]] != haystack[range[1]] || haystack[range[1]] == needle && haystack[range[0]] != haystack[range[1]])
                     ValidPasswords++;
             }
-            Console.WriteLine(ValidPasswords);
+            return ValidPasswords.ToString();
         }
     }
 }

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2020
 {
-    class Day_4 : Recurring
+    class Day_4 : Recurring // https://adventofcode.com/2020/day/4
     {
         private readonly string[] mustContain = new string[] { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
         private readonly string[] input = GetInput(4);
 
-        public List<string> RebuildInput(string[] input)
+        private List<string> RebuildInput(string[] input)
         {
             int currentIndex = 0;
             List<string> passports = new List<string>
@@ -29,7 +27,7 @@ namespace AdventOfCode2020
             return passports;
         }
 
-        public bool Validate(string key, string value)
+        private bool Validate(string key, string value)
         {
             bool retval = false;
             
@@ -86,7 +84,7 @@ namespace AdventOfCode2020
             }
             else if (key == "hcl")
             {
-                retval = new Regex("^#(?:[0-9a-fA-F]{3}){1,2}$").Match(value).Success;
+                retval = new System.Text.RegularExpressions.Regex("^#(?:[0-9a-fA-F]{3}){1,2}$").Match(value).Success;
             }
             else if (key == "ecl")
             {
@@ -94,12 +92,12 @@ namespace AdventOfCode2020
             }
             else if (key == "pid")
             {
-                retval = new Regex("^[0-9]{9}$").Match(value).Success;
+                retval = new System.Text.RegularExpressions.Regex("^[0-9]{9}$").Match(value).Success;
             }
             return retval;
         }
 
-        public override void RunPartA()
+        public override string RunPartA()
         {
             int validPassports = 0;
             foreach (string s in RebuildInput(input))
@@ -111,10 +109,10 @@ namespace AdventOfCode2020
 
                 validPassports += valid ? 1 : 0;
             }
-            Console.WriteLine($"Part A: {validPassports} valid passports");
+            return validPassports.ToString();
         }
 
-        public override void RunPartB()
+        public override string RunPartB()
         {
             int validPassports = 0;
             foreach (string s in RebuildInput(input))
@@ -143,7 +141,7 @@ namespace AdventOfCode2020
 
                 validPassports += valid ? 1 : 0;
             }
-            Console.WriteLine($"Part B: {validPassports} valid passports");
+            return validPassports.ToString();
         }
     }
 }

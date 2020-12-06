@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace AdventOfCode2020
 {
-    class Day_5 : Recurring
+    class Day_5 : Recurring // https://adventofcode.com/2020/day/5
     {
         private readonly string[] input = GetInput(5);
         private List<int> seatIds = new List<int>();
 
-        public override void RunPartA()
+        public override string RunPartA()
         {
             int partA = 0;
             foreach (string s in input)
@@ -22,18 +22,19 @@ namespace AdventOfCode2020
                 seatIds.Add(seatId);
             }
             seatIds.Sort();
-            Console.WriteLine(partA);
+            return partA.ToString();
         }
 
-        public override void RunPartB()
+        public override string RunPartB()
         {
-            int lId = -1;
+            int lId = -1, partB = -1;
             for (int i = 0; i < seatIds.Count; i++)
             {
                 if (lId != -1 && seatIds[i] - lId == 2)
-                    Console.WriteLine(seatIds[i] - 1);
+                    partB = seatIds[i] - 1;
                 lId = seatIds[i];
             }
+            return partB.ToString();
         }
     }
 }
