@@ -2,7 +2,7 @@
 {
     class Day_2 : Recurring // https://adventofcode.com/2020/day/2
     {
-        private readonly string[] input = GetInput(2);
+        private readonly string[] _input = GetInput(2);
 
         private int[] GetRange(string row)
         {
@@ -22,7 +22,7 @@
         public override string RunPartA()
         {
             int     ValidPasswords  = 0;
-            foreach(string row in input)
+            foreach(string row in _input)
             {
                 int[]   range       = GetRange(row);
                 char    needle      = GetChar(row);
@@ -42,7 +42,7 @@
         public override string RunPartB()
         {
             int     ValidPasswords  = 0;
-            foreach (string row in input)
+            foreach (string row in _input)
             {
                 int[]   range       = GetRange(row);
                         range[0]    = range[0] - 1;

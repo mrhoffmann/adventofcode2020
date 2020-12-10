@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Net;
 
 namespace AdventOfCode2020
 {
@@ -12,31 +14,41 @@ namespace AdventOfCode2020
         /// </summary>
         public virtual void Run()
         {
-            Console.WriteLine(RunPartA());
-            Console.WriteLine(RunPartB());
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            Console.WriteLine($"Part A: {RunPartA()} - {watch.ElapsedMilliseconds}ms");
+            watch.Stop();
+            watch = System.Diagnostics.Stopwatch.StartNew();
+            Console.WriteLine($"Part B: {RunPartB()} - {watch.ElapsedMilliseconds}ms");
+            watch.Stop();
             Console.ReadKey();
         }
 
-        /// <summary>
-        /// Retriew the input for the given day.
-        /// </summary>
-        /// <param name="day"></param>
-        /// <returns></returns>
-        public static string[] GetInput( int day )
+        public static string[] GetInput(int day)
         {
-            return System.IO.File.ReadAllLines($@"Input\Day {day}\input.txt");
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var wcl = new WebClient();
+            wcl.Headers.Add($"Cookie: session=");
+            string[] retval = wcl.DownloadString($"https://adventofcode.com/2020/day/{day}/input").Split("\n").Where(x => x.Length > 0).ToArray();
+            Console.WriteLine($"Get input: {watch.ElapsedMilliseconds}ms");
+            return retval;
         }
 
         /// <summary>
         /// Run part A of the day, in some cases must be ran first.
         /// <para>Please only execute Run.</para>
         /// </summary>
-        public abstract string RunPartA();
+        public virtual string RunPartA()
+        {
+            return "";
+        }
 
         /// <summary>
         /// Run part B of the day.
         /// <para>Please only execute Run.</para>
         /// </summary>
-        public abstract string RunPartB();
-    }
+        public virtual string RunPartB()
+        {
+            return "";
+        }
+}
 }

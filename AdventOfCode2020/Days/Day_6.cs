@@ -4,7 +4,7 @@ namespace AdventOfCode2020
 {
     class Day_6 : Recurring // https://adventofcode.com/2020/day/6
     {
-        private readonly string[] input = GetInput(6);
+        private readonly string[] _input = GetInput(6);
 
         private List<string> Divide()
         {
@@ -13,7 +13,7 @@ namespace AdventOfCode2020
             {
                 ""
             };
-            foreach (string s in input)
+            foreach (string s in _input)
             {
                 if (string.IsNullOrWhiteSpace(s) || string.IsNullOrEmpty(s))
                 {

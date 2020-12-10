@@ -5,8 +5,8 @@ namespace AdventOfCode2020
 {
     class Day_4 : Recurring // https://adventofcode.com/2020/day/4
     {
-        private readonly string[] mustContain = new string[] { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
-        private readonly string[] input = GetInput(4);
+        private readonly string[] _mustContain = new string[] { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
+        private readonly string[] _input = GetInput(4);
 
         private List<string> RebuildInput(string[] input)
         {
@@ -100,10 +100,10 @@ namespace AdventOfCode2020
         public override string RunPartA()
         {
             int validPassports = 0;
-            foreach (string s in RebuildInput(input))
+            foreach (string s in RebuildInput(_input))
             {
                 bool valid = true;
-                foreach (string t in mustContain)
+                foreach (string t in _mustContain)
                     if (!s.Contains(t))
                         valid = false;
 
@@ -115,10 +115,10 @@ namespace AdventOfCode2020
         public override string RunPartB()
         {
             int validPassports = 0;
-            foreach (string s in RebuildInput(input))
+            foreach (string s in RebuildInput(_input))
             {
                 bool valid = true;
-                foreach (string r in mustContain)
+                foreach (string r in _mustContain)
                     if (!s.Contains(r)) valid = false;
 
                 if (valid)

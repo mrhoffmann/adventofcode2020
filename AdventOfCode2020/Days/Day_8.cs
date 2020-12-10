@@ -4,17 +4,17 @@ namespace AdventOfCode2020
 {
     class Day_8 : Recurring // https://adventofcode.com/2020/day/8
     {
-        private readonly string[] input = GetInput(8);
+        private readonly string[] _input = GetInput(8);
 
         public override string RunPartA()
         {
-            return Routine(input).Accumulator.ToString();
+            return Routine(_input)[1].ToString();
         }
 
-        private ProgramCodeResult Routine(string[] param0)
+        private string[] Routine(string[] param0)
         {
             int accumulator = 0;
-            ProgramCodeResult retval = new ProgramCodeResult();
+            string[] retval = new string[2];
             List<int> ran = new List<int>();
             int action = 0; bool run = true;
 
@@ -30,67 +30,56 @@ namespace AdventOfCode2020
                 if ( ran.Contains( action ) )
                 {
                     run = false;
-                    retval = new ProgramCodeResult() { Infinite = true, Accumulator = accumulator };
+                    retval = new string[] { "1", accumulator.ToString() };
                 }
                 else if(action >= param0.Length)
                 {
                     run = false;
-                    retval = new ProgramCodeResult() { Infinite = false, Accumulator = accumulator };
+                    retval = new string[] { "0", accumulator.ToString() };
                 }
             }
 
             return retval;
         }
 
-        private ProgramCodeResult IsInfinite()
+        public override string RunPartB()
         {
-            int i = 0, length = input.Length;
+            int i = 0, length = _input.Length;
             bool run = true;
             string old = "";
-            ProgramCodeResult retval;
+            string[] retval;
             do
             {
-                if (i != 0) input[i - 1] = old;
+                if (i != 0) _input[i - 1] = old;
                 bool found = false;
 
                 while (!found && i < length)
                 {
-                    string[] words  = input[i].Split(" ");
-                    if (words[0]    == "nop")
+                    string[] words = _input[i].Split(" ");
+                    if (words[0] == "nop")
                     {
-                        found       = true;
-                        old         = input[i];
-                        input[i]    = old.Replace("nop", "jmp");
+                        found = true;
+                        old = _input[i];
+                        _input[i] = old.Replace("nop", "jmp");
                     }
                     else if (words[0] == "jmp")
                     {
-                        found       = true;
-                        old         = input[i];
-                        input[i]    = old.Replace("jmp", "nop");
+                        found = true;
+                        old = _input[i];
+                        _input[i] = old.Replace("jmp", "nop");
                     }
                     else
                         i++;
                 }
 
-                retval = Routine(input);
-                if (!retval.Infinite)
+                retval = Routine(_input);
+                if (retval[0] != "1")
                     run = false;
                 else
-                    input[i] = old;
+                    _input[i] = old;
                 i++;
             } while (run && i < length);
-            return retval;
+            return retval[1];
         }
-
-        public override string RunPartB()
-        {
-            return IsInfinite().Accumulator.ToString();
-        }
-    }
-
-    class ProgramCodeResult
-    {
-        public bool Infinite = false;
-        public int Accumulator = 0;
     }
 }

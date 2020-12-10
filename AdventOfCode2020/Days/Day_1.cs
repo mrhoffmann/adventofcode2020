@@ -4,12 +4,12 @@ namespace AdventOfCode2020
 {
     class Day_1 : Recurring // https://adventofcode.com/2020/day/1
     {
-        private readonly string[] input = GetInput(1);
+        private readonly string[] _input = GetInput(1);
 
         private List<int> GetIntInput()
         {
             List<int> retval = new List<int>();
-            foreach(string s in input)
+            foreach(string s in _input)
                 retval.Add(int.Parse(s));
             return retval;
         }
@@ -27,7 +27,7 @@ namespace AdventOfCode2020
                         options[1] = j;
                     }
 
-            return $"{options[0]} + {options[1]} = 2020\n{options[0]} * {options[1]} = {options[0] * options[1]}";
+            return $"{options[0] * options[1]}";
         }
 
         public override string RunPartB()
@@ -45,7 +45,7 @@ namespace AdventOfCode2020
                             options[2] = t;
                         }
 
-            return $"{options[0]} + {options[1]} + {options[2]} = 2020\n{options[0]} * {options[1]} * {options[2]} = {options[0] * options[1] * options[2]}";
+            return $"{options[0] * options[1] * options[2]}";
         }
     }
 }

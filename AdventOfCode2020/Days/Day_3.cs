@@ -2,14 +2,14 @@
 {
     class Day_3 : Recurring // https://adventofcode.com/2020/day/3
     {
-        private readonly string[] input = GetInput(3);
+        private readonly string[] _input = GetInput(3);
 
         private int CheckCollision(int incY, int incX)
         {
             int trees = 0, cell = 0;
-            for(int row = 0; row < input.Length; row += incX)
+            for(int row = 0; row < _input.Length; row += incX)
             {
-                if (input[row][cell] == '#')
+                if (_input[row][cell] == '#')
                     trees++;
                 cell = (cell + incY) % 31;
             }
